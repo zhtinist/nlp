@@ -23,7 +23,7 @@ Both tasks use the same Bi-LSTM+CRF architecture. The CRF layer learns transitio
 
 ```
 nlp/
-├── 实验报告.pdf          # Course lab report (in Chinese)
+├── 实验报告.pdf (Lab Report)  # Course lab report (in Chinese)
 ├── src/
 │   ├── exp1/             # Lab 1: Chinese word segmentation
 │   │   ├── model.py      # Bi-LSTM+CRF model definition
