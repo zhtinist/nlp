@@ -1,63 +1,61 @@
-实验中代码仅提供一种简单的 Bi-LSTM+CRF PyTorch 实现方案。
+The code in this lab provides one simple PyTorch implementation of Bi-LSTM+CRF.
 
-更优实现可参见：https://github.com/bamtercelboo/pytorch_NER_BiLSTM_CNN_CRF/
+For a more complete implementation, see: https://github.com/bamtercelboo/pytorch_NER_BiLSTM_CNN_CRF/
 
-## 环境搭建
+## Setup
 
-1. 安装 Anaconda
+1. Install Anaconda
 
-   <a href="https://zhuanlan.zhihu.com/p/75717350">windows 下安装教程</a>
+   <a href="https://zhuanlan.zhihu.com/p/75717350">Windows installation guide (in Chinese)</a>
 
-   官方文档：<a href="https://docs.continuum.io/anaconda/install/">anaconda install</a>
+   Official documentation: <a href="https://docs.continuum.io/anaconda/install/">anaconda install</a>
 
-2. 搭建虚拟环境并安装 PyTorch
+2. Create a virtual environment and install PyTorch
     ```shell
-    # 创建虚拟环境
-    conda create -n nlplab python=3.7	# 创建名为 nlplab 的虚拟环境
+    # Create the virtual environment
+    conda create -n nlplab python=3.7	# creates a virtual environment named nlplab
 
-    # 虚拟环境相关命令
-    conda activate nlplab  # 激活虚拟环境nlplab，成功执行后应看到命令行首部由 (base) 变为 (nlplab)
-    conda deactivate       # 退出当前虚拟环境
-    conda info -e          # 查看所有虚拟环境，*指示当前所处环境
+    # Virtual environment commands
+    conda activate nlplab  # activate nlplab; the prompt prefix should change from (base) to (nlplab)
+    conda deactivate       # leave the current virtual environment
+    conda info -e          # list all virtual environments; * marks the current one
 
-    # 安装 Pytorch 1.6.0 CPU 版本
-    # 注意：先激活 nlplab 虚拟环境，再进行安装
+    # Install PyTorch 1.6.0 (CPU)
+    # Note: activate the nlplab environment before installing
     conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
     conda install pytorch==1.6.0 cpuonly
     ```
    ```shell
    pip install torch==1.7.1+cpu torchvision==0.8.2+cpu torchaudio==0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
    ```
-## 运行方式
+## Running
 
-1. 配置 PyCharm
+1. Configure PyCharm
 
-   安装 PyCharm，并在 PyCharm 中使用 Anaconda 虚拟环境 (<a href="https://jingyan.baidu.com/article/f3e34a12e7b015f5eb653523.html">参考</a>)
+   Install PyCharm and set it to use the Anaconda virtual environment (<a href="https://jingyan.baidu.com/article/f3e34a12e7b015f5eb653523.html">reference, in Chinese</a>)
 
-2. 安装其他依赖
+2. Install other dependencies
 
    ```sh
-   # 在 nlplab 虚拟环境中安装
+   # Run inside the nlplab virtual environment
    pip install -r requirements.txt
    ```
 
-3. 训练
+3. Train
 
    ```shell
-   # save 目录下存放了一个粗略训练过的模型，可先跳过训练过程直接进行推断
-   
-   # 数据准备，data 目录下运行
+   # save/ contains a roughly trained model, so you can skip training and go straight to inference
+
+   # Prepare data (run inside data/)
    python 0.split.py
    python 1.data_u_ner.py
-   # 模型训练，项目根目录下运行
-   # 若安装并配置了 GPU 相关运行环境可添加命令行参数 --cuda 来使用 GPU 训练
+   # Train the model (run from the project root)
+   # If a GPU environment is installed and configured, add --cuda to train on the GPU
    python run.py
    ```
 
-4. 推断
+4. Inference
 
    ```shell
    python infer.py
    ```
-
-   

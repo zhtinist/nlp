@@ -1,108 +1,108 @@
 # NLP Course Projects
 
-本科自然语言处理课程实验项目。
+Lab projects from my undergraduate Natural Language Processing course.
 
-## 项目概述
+## Overview
 
-基于 PyTorch 实现 Bi-LSTM+CRF 模型，完成两个经典 NLP 序列标注任务：
+A Bi-LSTM+CRF model implemented in PyTorch for two classic NLP sequence-labeling tasks:
 
-| 实验 | 任务 | 目录 |
+| Lab | Task | Directory |
 |------|------|------|
-| 实验一 | 中文分词 (Chinese Word Segmentation) | `src/exp1/` |
-| 实验二 | 命名实体识别 (Named Entity Recognition) | `src/exp2/` |
+| Lab 1 | Chinese Word Segmentation (CWS) | `src/exp1/` |
+| Lab 2 | Named Entity Recognition (NER) | `src/exp2/` |
 
-## 模型架构
+## Model Architecture
 
 ```
 Input → Embedding → Bi-LSTM → Linear → CRF → Output
 ```
 
-两个任务均采用相同的 Bi-LSTM+CRF 结构，通过 CRF 层学习标签间的转移约束，提升序列标注效果。
+Both tasks use the same Bi-LSTM+CRF architecture. The CRF layer learns transition constraints between labels to improve sequence-labeling accuracy.
 
-## 目录结构
+## Project Structure
 
 ```
 nlp/
-├── 实验报告.pdf          # 课程实验报告
+├── 实验报告.pdf          # Course lab report (in Chinese)
 ├── src/
-│   ├── exp1/             # 实验一：中文分词
-│   │   ├── model.py      # Bi-LSTM+CRF 模型定义
-│   │   ├── dataloader.py # 数据加载与预处理
-│   │   ├── run.py        # 训练脚本
-│   │   ├── infer.py      # 推断脚本
-│   │   ├── cws_result.txt# 分词结果输出
-│   │   ├── data/         # 训练/测试数据
-│   │   └── save/         # 模型保存目录
-│   └── exp2/             # 实验二：命名实体识别
-│       ├── model.py      # Bi-LSTM+CRF 模型定义
-│       ├── dataloader.py # 数据加载与预处理
-│       ├── run.py        # 训练脚本
-│       ├── infer.py      # 推断脚本
-│       ├── ner_result.txt# NER结果输出
-│       ├── data/         # 训练/验证/测试数据
-│       └── save/         # 模型保存目录
+│   ├── exp1/             # Lab 1: Chinese word segmentation
+│   │   ├── model.py      # Bi-LSTM+CRF model definition
+│   │   ├── dataloader.py # Data loading and preprocessing
+│   │   ├── run.py        # Training script
+│   │   ├── infer.py      # Inference script
+│   │   ├── cws_result.txt# Segmentation output
+│   │   ├── data/         # Training/test data
+│   │   └── save/         # Saved models
+│   └── exp2/             # Lab 2: Named entity recognition
+│       ├── model.py      # Bi-LSTM+CRF model definition
+│       ├── dataloader.py # Data loading and preprocessing
+│       ├── run.py        # Training script
+│       ├── infer.py      # Inference script
+│       ├── ner_result.txt# NER output
+│       ├── data/         # Training/validation/test data
+│       └── save/         # Saved models
 ```
 
-## 环境搭建
+## Setup
 
-### 1. 安装 Anaconda
+### 1. Install Anaconda
 
-- [Windows 安装教程](https://zhuanlan.zhihu.com/p/75717350)
-- [官方文档](https://docs.continuum.io/anaconda/install/)
+- [Windows installation guide (in Chinese)](https://zhuanlan.zhihu.com/p/75717350)
+- [Official documentation](https://docs.continuum.io/anaconda/install/)
 
-### 2. 创建虚拟环境并安装 PyTorch
+### 2. Create a Virtual Environment and Install PyTorch
 
 ```shell
-# 创建虚拟环境
+# Create the virtual environment
 conda create -n nlplab python=3.7
 
-# 激活虚拟环境
+# Activate it
 conda activate nlplab
 
-# 安装 PyTorch 1.6.0 CPU 版本
+# Install PyTorch 1.6.0 (CPU)
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
 conda install pytorch==1.6.0 cpuonly
 ```
 
-### 3. 安装依赖
+### 3. Install Dependencies
 
 ```shell
 pip install -r src/exp1/requirements.txt
 ```
 
-## 运行方式
+## Running
 
-### 实验一：中文分词
+### Lab 1: Chinese Word Segmentation
 
 ```shell
 cd src/exp1
 
-# 数据准备 (在 data 目录下运行)
+# Prepare data (run inside data/)
 cd data && python data_u.py && cd ..
 
-# 训练 (可选 --cuda 使用 GPU)
+# Train (add --cuda to use a GPU)
 python run.py
 
-# 推断
+# Inference
 python infer.py
 ```
 
-### 实验二：命名实体识别
+### Lab 2: Named Entity Recognition
 
 ```shell
 cd src/exp2
 
-# 数据准备 (在 data 目录下运行)
+# Prepare data (run inside data/)
 cd data && python 0.split.py && python 1.data_u_ner.py && cd ..
 
-# 训练 (可选 --cuda 使用 GPU)
+# Train (add --cuda to use a GPU)
 python run.py
 
-# 推断
+# Inference
 python infer.py
 ```
 
-## 参考
+## References
 
 - [pytorch_NER_BiLSTM_CNN_CRF](https://github.com/bamtercelboo/pytorch_NER_BiLSTM_CNN_CRF/)
-- [PyTorch 官方文档](https://pytorch.org/docs/)
+- [PyTorch documentation](https://pytorch.org/docs/)
